@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://web4b.co.il/sitemap.xml
