@@ -1,0 +1,15 @@
+{
+  "name": "web4b — אתרים מקצועיים לעסקים",
+  "short_name": "web4b",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#2563eb",
+  "icons": [
+    {
+      "src": "assets/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}
