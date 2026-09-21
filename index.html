@@ -837,9 +837,10 @@
         </div>
       </div>
 
-      <form class="contact-form" id="contact-form" name="contact" method="POST" action="https://formsubmit.co/ajax/dbdhrhhe8@gmail.com">
-        <input type="hidden" name="_subject" value="פנייה חדשה מהאתר — web4b">
-        <input type="hidden" name="_template" value="table">
+      <form class="contact-form" id="contact-form" name="contact" method="POST" action="https://api.web3forms.com/submit">
+        <input type="hidden" name="access_key" value="REPLACE_WITH_YOUR_WEB3FORMS_ACCESS_KEY">
+        <input type="hidden" name="subject" value="פנייה חדשה מהאתר — web4b">
+        <input type="hidden" name="from_name" value="web4b — טופס יצירת קשר">
         <p class="honeypot"><label>אל תמלאו שדה זה: <input name="_honey" autocomplete="off" tabindex="-1"></label></p>
 
         <div class="form-success" id="form-success">✅ הפרטים התקבלו! נחזור אליכם בהקדם.</div>
@@ -882,6 +883,29 @@
               <option value="prime">Prime — עיצוב מלא + הזמנות מתקדמות</option>
               <option value="elite">Elite — חנות אונליין + התאמה מלאה</option>
               <option value="not-sure">עדיין לא בטוח / בטוחה</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="field">
+            <label for="budget">תקציב חודשי משוער</label>
+            <select id="budget" name="budget">
+              <option value="">בחרו אפשרות</option>
+              <option value="up-to-50">עד 50 ₪ לחודש</option>
+              <option value="50-100">50-100 ₪ לחודש</option>
+              <option value="100-150">100-150 ₪ לחודש</option>
+              <option value="150-plus">מעל 150 ₪ לחודש</option>
+              <option value="not-sure">לא בטוח / בטוחה</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="timeline">מתי תרצו להתחיל?</label>
+            <select id="timeline" name="timeline">
+              <option value="">בחרו אפשרות</option>
+              <option value="asap">בהקדם האפשרי</option>
+              <option value="this-month">בחודש הקרוב</option>
+              <option value="just-checking">עדיין בודקים / בודקות</option>
             </select>
           </div>
         </div>
