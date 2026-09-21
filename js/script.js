@@ -237,4 +237,32 @@
         });
     });
   });
+
+  /* ---------- Cookie consent banner ---------- */
+  safe("cookie banner", function () {
+    var banner = document.getElementById("cookie-banner");
+    var acceptBtn = document.getElementById("cookie-accept");
+    if (!banner || !acceptBtn) return;
+
+    var STORAGE_KEY = "web4b-cookie-consent";
+    var alreadyAccepted = false;
+    try {
+      alreadyAccepted = localStorage.getItem(STORAGE_KEY) === "1";
+    } catch (e) {
+      alreadyAccepted = false;
+    }
+
+    if (!alreadyAccepted) {
+      banner.classList.add("is-visible");
+    }
+
+    acceptBtn.addEventListener("click", function () {
+      banner.classList.remove("is-visible");
+      try {
+        localStorage.setItem(STORAGE_KEY, "1");
+      } catch (e) {
+        /* ignore storage failures (private mode, etc.) */
+      }
+    });
+  });
 })();

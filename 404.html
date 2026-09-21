@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<script>document.documentElement.classList.add('js');</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>העמוד לא נמצא | web4b</title>
+<meta name="description" content="העמוד שחיפשתם לא נמצא. חזרו לעמוד הבית של web4b.">
+<meta name="robots" content="noindex, follow">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<style>
+  .error-page {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: calc(var(--nav-h) + 32px) 24px 64px;
+    text-align: center;
+  }
+  .error-code {
+    font-size: clamp(90px, 16vw, 160px);
+    font-weight: 800;
+    line-height: 1;
+    background: var(--gradient-text);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    margin-bottom: 12px;
+  }
+  .error-title { font-size: clamp(22px, 3vw, 30px); margin-bottom: 14px; }
+  .error-sub { font-size: 16px; color: var(--color-ink-soft); max-width: 420px; margin: 0 auto 32px; }
+  .error-actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+</style>
+</head>
+<body>
+<header class="navbar is-scrolled">
+  <div class="container">
+    <a href="index.html#top" class="logo"><span class="logo-mark">4</span> web4b</a>
+    <nav class="nav-links"><a href="index.html#pricing">מחירים</a><a href="index.html#contact">צור קשר</a></nav>
+    <div class="nav-actions"><a href="index.html#contact" class="btn btn-primary btn-sm">בואו נתחיל</a></div>
+  </div>
+</header>
+
+<main class="error-page">
+  <div>
+    <div class="error-code">404</div>
+    <h1 class="error-title">העמוד שחיפשתם לא נמצא</h1>
+    <p class="error-sub">אולי הקישור השתנה, ואולי פשוט הלכתם לאיבוד. בכל מקרה, נחזיר אתכם למסלול.</p>
+    <div class="error-actions">
+      <a href="index.html" class="btn btn-primary">חזרה לעמוד הבית</a>
+      <a href="index.html#contact" class="btn btn-secondary">צור קשר</a>
+    </div>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="container footer-bottom" style="border-top:none; padding-top:0;">
+    <span>© 2026 web4b. כל הזכויות שמורות.</span>
+  </div>
+</footer>
+</body>
+</html>
