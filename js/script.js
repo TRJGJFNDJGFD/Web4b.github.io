@@ -13,6 +13,17 @@
     }
   }
 
+  /* GA4 event tracking — no-ops safely if gtag isn't loaded (blocked, offline, etc.) */
+  function trackEvent(name, params) {
+    try {
+      if (typeof window.gtag === "function") {
+        window.gtag("event", name, params || {});
+      }
+    } catch (e) {
+      /* never let analytics break the actual feature */
+    }
+  }
+
   /* ---------- Sticky navbar ---------- */
   safe("sticky navbar", function () {
     var navbar = document.getElementById("navbar");
@@ -128,6 +139,7 @@
     document.querySelectorAll("[data-plan]").forEach(function (btn) {
       btn.addEventListener("click", function () {
         var plan = btn.getAttribute("data-plan");
+        trackEvent("select_plan", { plan_name: plan });
         var select = document.getElementById("site-type");
         if (!select) return;
         var map = { Starter: "starter", Business: "business", Pro: "pro", Premium: "premium", Prime: "prime", Elite: "elite" };
@@ -157,6 +169,7 @@
       var username = discordBtn.getAttribute("data-copy");
       var originalText = username + " · לחצו להעתקה";
       discordBtn.addEventListener("click", function () {
+        trackEvent("discord_copy", { location: "contact_section" });
         copyToClipboard(username, function () {
           discordBtn.classList.add("is-copied");
           discordLabel.textContent = username + " · הועתק! ✅";
@@ -171,6 +184,7 @@
     var footerDiscordBtn = document.querySelector(".footer-discord-btn");
     if (footerDiscordBtn) {
       footerDiscordBtn.addEventListener("click", function () {
+        trackEvent("discord_copy", { location: "footer" });
         var uname = footerDiscordBtn.getAttribute("data-copy");
         copyToClipboard(uname, function () {
           footerDiscordBtn.classList.add("is-copied");
@@ -182,6 +196,15 @@
         });
       });
     }
+  });
+
+  /* ---------- WhatsApp link click tracking ---------- */
+  safe("WhatsApp click tracking", function () {
+    document.querySelectorAll('a[href*="wa.me"]').forEach(function (link) {
+      link.addEventListener("click", function () {
+        trackEvent("whatsapp_click", { location: "footer" });
+      });
+    });
   });
 
   /* ---------- Contact form submission ---------- */
@@ -218,6 +241,7 @@
       })
         .then(function (res) {
           if (!res.ok) throw new Error("submit failed");
+          trackEvent("generate_lead", { method: "contact_form" });
           if (successBox) {
             successBox.classList.add("is-visible");
             successBox.scrollIntoView({ behavior: "smooth", block: "center" });
