@@ -240,7 +240,14 @@
         body: data,
       })
         .then(function (res) {
-          if (!res.ok) throw new Error("submit failed");
+          return res.json().then(function (json) {
+            return { ok: res.ok, json: json };
+          });
+        })
+        .then(function (result) {
+          if (!result.ok || !result.json || result.json.success === false) {
+            throw new Error((result.json && result.json.message) || "submit failed");
+          }
           trackEvent("generate_lead", { method: "contact_form" });
           if (successBox) {
             successBox.classList.add("is-visible");
@@ -252,12 +259,12 @@
             submitBtn.textContent = "שליחת פרטים";
           }
         })
-        .catch(function () {
+        .catch(function (err) {
           if (submitBtn) {
             submitBtn.disabled = false;
             submitBtn.textContent = "שליחת פרטים";
           }
-          alert("משהו השתבש בשליחה. אפשר לפנות אלינו גם ב-WhatsApp.");
+          alert("שגיאה בשליחה: " + err.message + "\nאפשר לפנות אלינו גם ב-WhatsApp.");
         });
     });
   });
