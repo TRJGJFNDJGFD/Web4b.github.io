@@ -1215,30 +1215,3 @@ button { font-family: inherit; cursor: pointer; }
   .cookie-banner { padding: 16px 18px; text-align: center; }
   .cookie-banner p { font-size: 13px; }
 }
-
-.whatsapp-fab {
-  position: fixed;
-  bottom: 24px;
-  inset-inline-end: 24px;
-  z-index: 1400;
-  width: 56px;
-  height: 56px;
-  border-radius: 50%;
-  background: #25d366;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 28px;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
-  text-decoration: none;
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
-}
-.whatsapp-fab:hover {
-  transform: scale(1.08);
-  box-shadow: 0 8px 26px rgba(0, 0, 0, 0.3);
-}
-.whatsapp-fab.is-above-banner { bottom: 90px; }
-@media (max-width: 640px) {
-  .whatsapp-fab { bottom: 18px; inset-inline-end: 18px; width: 52px; height: 52px; font-size: 26px; }
-  .whatsapp-fab.is-above-banner { bottom: 130px; }
-}

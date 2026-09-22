@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f6f8fb"/>
+      <stop offset="100%" stop-color="#eaf1ff"/>
+    </linearGradient>
+    <linearGradient id="brand" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2563eb"/>
+      <stop offset="100%" stop-color="#0ea5e9"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect x="80" y="80" width="72" height="72" rx="18" fill="url(#brand)"/>
+  <text x="130" y="130" font-family="Arial, sans-serif" font-size="34" font-weight="800" fill="#ffffff" text-anchor="middle">S</text>
+  <text x="175" y="132" font-family="Arial, sans-serif" font-size="40" font-weight="800" fill="#0b1220">Sitely</text>
+  <text x="80" y="260" font-family="Arial, sans-serif" font-size="52" font-weight="800" fill="#0b1220" direction="rtl">האתר שהעסק שלכם צריך</text>
+  <text x="80" y="330" font-family="Arial, sans-serif" font-size="52" font-weight="800" fill="#1743b3" direction="rtl">במחיר שכל עסק יכול להרשות</text>
+  <text x="80" y="410" font-family="Arial, sans-serif" font-size="26" fill="#4b5768" direction="rtl">בניית אתרים מקצועיים בעזרת AI + עיצוב אנושי · מ-19 ₪ לחודש</text>
+</svg>
