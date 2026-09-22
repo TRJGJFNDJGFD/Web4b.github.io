@@ -1215,3 +1215,93 @@ button { font-family: inherit; cursor: pointer; }
   .cookie-banner { padding: 16px 18px; text-align: center; }
   .cookie-banner p { font-size: 13px; }
 }
+
+/* ---------- Plan recommender quiz ---------- */
+.quiz-toggle-wrap, .compare-toggle-wrap {
+  text-align: center;
+  margin-bottom: 28px;
+}
+.plan-quiz {
+  max-width: 520px;
+  margin: 0 auto 40px;
+  background: var(--color-bg-soft-2);
+  border-radius: 16px;
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.plan-quiz[hidden] { display: none; }
+.quiz-question { display: flex; flex-direction: column; gap: 6px; }
+.quiz-question label { font-weight: 600; font-size: 14.5px; color: var(--color-ink); }
+.quiz-question select {
+  padding: 10px 14px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border);
+  background: #fff;
+  font-family: inherit;
+  font-size: 14.5px;
+}
+.quiz-result {
+  background: #fff;
+  border-radius: var(--radius-sm);
+  padding: 16px;
+  font-size: 15.5px;
+  text-align: center;
+}
+.quiz-result strong { color: var(--color-accent); font-size: 18px; }
+
+.price-card.is-recommended {
+  border: 2px solid var(--color-accent);
+  box-shadow: 0 0 0 4px var(--color-accent-soft);
+}
+.price-card.is-recommended::before {
+  content: "🎯 מומלץ בשבילכם";
+  display: block;
+  text-align: center;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--color-accent);
+  margin-bottom: 8px;
+}
+
+/* ---------- Pricing comparison table ---------- */
+.compare-table-wrap {
+  overflow-x: auto;
+  margin-bottom: 40px;
+  border-radius: 16px;
+  border: 1px solid var(--color-border);
+}
+.compare-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+  min-width: 720px;
+}
+.compare-table th, .compare-table td {
+  padding: 12px 16px;
+  text-align: center;
+  border-bottom: 1px solid var(--color-border);
+  white-space: nowrap;
+}
+.compare-table thead th {
+  background: var(--color-bg-soft-2);
+  font-weight: 700;
+  position: sticky;
+  top: 0;
+}
+.compare-table th[scope="row"] {
+  text-align: right;
+  font-weight: 600;
+  color: var(--color-ink);
+  background: #fff;
+  position: sticky;
+  inset-inline-start: 0;
+}
+.compare-table thead th:first-child {
+  position: sticky;
+  inset-inline-start: 0;
+  z-index: 2;
+}
+.compare-table tbody tr:last-child td, .compare-table tbody tr:last-child th { border-bottom: none; }
+.compare-table tbody tr:nth-child(even) { background: rgba(37, 99, 235, 0.03); }

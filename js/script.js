@@ -153,6 +153,79 @@
     });
   });
 
+  /* ---------- Pricing comparison table toggle ---------- */
+  safe("comparison table toggle", function () {
+    var toggleBtn = document.getElementById("compare-toggle");
+    var tableWrap = document.getElementById("compare-table-wrap");
+    if (!toggleBtn || !tableWrap) return;
+
+    toggleBtn.addEventListener("click", function () {
+      var willShow = tableWrap.hidden;
+      tableWrap.hidden = !willShow;
+      toggleBtn.setAttribute("aria-expanded", String(willShow));
+      if (willShow) {
+        trackEvent("view_plan_comparison", {});
+      }
+    });
+  });
+
+  /* ---------- Plan recommender quiz ---------- */
+  safe("plan recommender quiz", function () {
+    var toggleBtn = document.getElementById("quiz-toggle");
+    var quizBox = document.getElementById("plan-quiz");
+    if (toggleBtn && quizBox) {
+      toggleBtn.addEventListener("click", function () {
+        var willShow = quizBox.hidden;
+        quizBox.hidden = !willShow;
+        toggleBtn.setAttribute("aria-expanded", String(willShow));
+      });
+    }
+
+    var submitBtn = document.getElementById("quiz-submit");
+    var resultBox = document.getElementById("quiz-result");
+    var pagesSelect = document.getElementById("quiz-pages");
+    var storeSelect = document.getElementById("quiz-store");
+    var bookingSelect = document.getElementById("quiz-booking");
+    if (!submitBtn || !resultBox || !pagesSelect || !storeSelect || !bookingSelect) return;
+
+    submitBtn.addEventListener("click", function () {
+      var pages = pagesSelect.value;
+      var store = storeSelect.value;
+      var booking = bookingSelect.value;
+
+      var plan;
+      if (store === "yes") {
+        plan = "Elite";
+      } else if (booking === "yes") {
+        plan = "Prime";
+      } else if (pages === "10") {
+        plan = "Premium";
+      } else if (pages === "7") {
+        plan = "Pro";
+      } else if (pages === "4") {
+        plan = "Business";
+      } else {
+        plan = "Starter";
+      }
+
+      trackEvent("plan_quiz_result", { recommended_plan: plan });
+
+      resultBox.hidden = false;
+      resultBox.innerHTML = "ההמלצה שלנו: <strong>" + plan + "</strong>";
+
+      document.querySelectorAll(".price-card.is-recommended").forEach(function (card) {
+        card.classList.remove("is-recommended");
+      });
+
+      var chosenBtn = document.querySelector('[data-plan="' + plan + '"]');
+      var card = chosenBtn && chosenBtn.closest(".price-card");
+      if (card) {
+        card.classList.add("is-recommended");
+        card.scrollIntoView({ behavior: "smooth", block: "center" });
+      }
+    });
+  });
+
   /* ---------- Discord username copy-to-clipboard ---------- */
   safe("Discord copy buttons", function () {
     function copyToClipboard(text, onDone) {

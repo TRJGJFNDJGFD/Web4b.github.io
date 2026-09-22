@@ -413,6 +413,37 @@
       <p class="section-sub">בלי עלויות נסתרות, בלי התחייבות ארוכה — בוחרים את החבילה המתאימה ומתחילים.</p>
     </div>
 
+    <div class="quiz-toggle-wrap reveal">
+      <button type="button" class="btn btn-secondary" id="quiz-toggle" aria-expanded="false" aria-controls="plan-quiz">🧭 לא בטוחים איזו חבילה מתאימה? בדקו ב-30 שניות</button>
+    </div>
+    <div class="plan-quiz" id="plan-quiz" hidden>
+      <div class="quiz-question">
+        <label for="quiz-pages">כמה עמודים אתם צריכים?</label>
+        <select id="quiz-pages">
+          <option value="2">עד 2 עמודים</option>
+          <option value="4">3-4 עמודים</option>
+          <option value="7">5-7 עמודים</option>
+          <option value="10">8-10 עמודים, או עיצוב מלא בהתאמה אישית</option>
+        </select>
+      </div>
+      <div class="quiz-question">
+        <label for="quiz-store">אתם צריכים חנות אונליין עם סליקת תשלומים?</label>
+        <select id="quiz-store">
+          <option value="no">לא</option>
+          <option value="yes">כן</option>
+        </select>
+      </div>
+      <div class="quiz-question">
+        <label for="quiz-booking">אתם צריכים מערכת הזמנות/תיאומים מתקדמת?</label>
+        <select id="quiz-booking">
+          <option value="no">לא</option>
+          <option value="yes">כן</option>
+        </select>
+      </div>
+      <button type="button" class="btn btn-primary" id="quiz-submit">הצגת ההמלצה שלי</button>
+      <div class="quiz-result" id="quiz-result" hidden></div>
+    </div>
+
     <div class="pricing-grid reveal-stagger reveal">
 
       <!-- Starter -->
@@ -519,6 +550,41 @@
         <a href="#contact" class="btn btn-secondary btn-block" data-plan="Elite">בחירת Elite</a>
       </div>
 
+    </div>
+
+    <div class="compare-toggle-wrap reveal">
+      <button type="button" class="btn btn-secondary" id="compare-toggle" aria-expanded="false" aria-controls="compare-table-wrap">📊 הצגת השוואה מלאה בין כל החבילות</button>
+    </div>
+    <div class="compare-table-wrap" id="compare-table-wrap" hidden>
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th scope="col">תכונה</th>
+            <th scope="col">Starter</th>
+            <th scope="col">Business</th>
+            <th scope="col">Pro</th>
+            <th scope="col">Premium</th>
+            <th scope="col">Prime</th>
+            <th scope="col">Elite</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><th scope="row">מחיר חודשי</th><td>19 ₪</td><td>39 ₪</td><td>59 ₪</td><td>89 ₪</td><td>139 ₪</td><td>169 ₪</td></tr>
+          <tr><th scope="row">מספר עמודים</th><td>עד 2</td><td>עד 4</td><td>עד 7</td><td>עד 10</td><td>עד 10</td><td>עד 10</td></tr>
+          <tr><th scope="row">עיצוב בהתאמה אישית</th><td>—</td><td>—</td><td>✓</td><td>✓</td><td>✓ 100%</td><td>✓ 100%</td></tr>
+          <tr><th scope="row">דומיין אישי</th><td>—</td><td>—</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td></tr>
+          <tr><th scope="row">טופס יצירת קשר</th><td>—</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td></tr>
+          <tr><th scope="row">WhatsApp</th><td>—</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td></tr>
+          <tr><th scope="row">גלריית תמונות</th><td>—</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td></tr>
+          <tr><th scope="row">Google Maps</th><td>—</td><td>✓</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+          <tr><th scope="row">SEO</th><td>—</td><td>—</td><td>בסיסי</td><td>✓</td><td>✓</td><td>✓</td></tr>
+          <tr><th scope="row">Google Analytics</th><td>—</td><td>—</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td></tr>
+          <tr><th scope="row">מערכת הזמנות/תיאומים</th><td>—</td><td>—</td><td>—</td><td>—</td><td>✓ מתקדמת</td><td>✓ מתקדמת</td></tr>
+          <tr><th scope="row">חנות אונליין + סליקה</th><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>✓</td></tr>
+          <tr><th scope="row">עדכונים שוטפים</th><td>—</td><td>—</td><td>—</td><td>בסיסיים</td><td>חודשיים</td><td>חודשיים</td></tr>
+          <tr><th scope="row">תמיכה</th><td>רגילה</td><td>רגילה</td><td>רגילה</td><td>בעדיפות</td><td>ייעודית</td><td>ליווי מלא</td></tr>
+        </tbody>
+      </table>
     </div>
 
     <!-- Add-ons -->
