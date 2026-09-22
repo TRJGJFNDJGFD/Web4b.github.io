@@ -283,12 +283,16 @@
       alreadyAccepted = false;
     }
 
+    var fab = document.querySelector(".whatsapp-fab");
+
     if (!alreadyAccepted) {
       banner.classList.add("is-visible");
+      if (fab) fab.classList.add("is-above-banner");
     }
 
     acceptBtn.addEventListener("click", function () {
       banner.classList.remove("is-visible");
+      if (fab) fab.classList.remove("is-above-banner");
       try {
         localStorage.setItem(STORAGE_KEY, "1");
       } catch (e) {
