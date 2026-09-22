@@ -184,23 +184,42 @@
     var submitBtn = document.getElementById("quiz-submit");
     var resultBox = document.getElementById("quiz-result");
     var pagesSelect = document.getElementById("quiz-pages");
+    var domainSelect = document.getElementById("quiz-domain");
+    var designSelect = document.getElementById("quiz-design");
     var storeSelect = document.getElementById("quiz-store");
     var bookingSelect = document.getElementById("quiz-booking");
-    if (!submitBtn || !resultBox || !pagesSelect || !storeSelect || !bookingSelect) return;
+    var updatesSelect = document.getElementById("quiz-updates");
+    if (
+      !submitBtn ||
+      !resultBox ||
+      !pagesSelect ||
+      !domainSelect ||
+      !designSelect ||
+      !storeSelect ||
+      !bookingSelect ||
+      !updatesSelect
+    ) {
+      return;
+    }
 
     submitBtn.addEventListener("click", function () {
       var pages = pagesSelect.value;
+      var domain = domainSelect.value;
+      var design = designSelect.value;
       var store = storeSelect.value;
       var booking = bookingSelect.value;
+      var updates = updatesSelect.value;
 
       var plan;
       if (store === "yes") {
         plan = "Elite";
       } else if (booking === "yes") {
         plan = "Prime";
-      } else if (pages === "10") {
+      } else if (updates === "yes") {
+        plan = "Prime";
+      } else if (design === "full" || pages === "10") {
         plan = "Premium";
-      } else if (pages === "7") {
+      } else if (domain === "yes" || pages === "7") {
         plan = "Pro";
       } else if (pages === "4") {
         plan = "Business";
