@@ -1257,6 +1257,31 @@ button { font-family: inherit; cursor: pointer; }
 }
 .quiz-result strong { color: var(--color-accent); font-size: 18px; }
 
+/* ---------- Custom package builder ---------- */
+.builder-options { display: flex; flex-direction: column; gap: 10px; }
+.builder-option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border);
+  background: #fff;
+  font-size: 14.5px;
+  cursor: pointer;
+}
+.builder-option input { flex: none; width: 18px; height: 18px; cursor: pointer; }
+.builder-option-price { margin-inline-start: auto; font-weight: 700; color: var(--color-accent); white-space: nowrap; }
+.builder-total {
+  background: #fff;
+  border-radius: var(--radius-sm);
+  padding: 16px;
+  font-size: 16px;
+  text-align: center;
+}
+.builder-total strong { color: var(--color-accent); font-size: 22px; }
+.builder-note { font-size: 13px; color: var(--color-ink-soft); text-align: center; margin: 0; }
+
 .price-card.is-recommended {
   border: 2px solid var(--color-accent);
   box-shadow: 0 0 0 4px var(--color-accent-soft);

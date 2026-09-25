@@ -245,6 +245,105 @@
     });
   });
 
+  /* ---------- Custom package builder ---------- */
+  safe("package builder", function () {
+    var toggleBtn = document.getElementById("builder-toggle");
+    var builderBox = document.getElementById("package-builder");
+    if (toggleBtn && builderBox) {
+      toggleBtn.addEventListener("click", function () {
+        var willShow = builderBox.hidden;
+        builderBox.hidden = !willShow;
+        toggleBtn.setAttribute("aria-expanded", String(willShow));
+      });
+    }
+    if (!builderBox) return;
+
+    var totalBox = document.getElementById("builder-total");
+    var tierRadios = builderBox.querySelectorAll('input[name="builder-tier"]');
+    var addonChecks = builderBox.querySelectorAll("input[data-addon]");
+    var submitBtn = document.getElementById("builder-submit");
+    if (!totalBox || !tierRadios.length || !submitBtn) return;
+
+    function currentSelection() {
+      var tierPrice = 0;
+      var tierName = "";
+      tierRadios.forEach(function (r) {
+        if (r.checked) {
+          tierPrice = parseFloat(r.getAttribute("data-price")) || 0;
+          tierName = r.value;
+        }
+      });
+      var addonTotal = 0;
+      var addonLabels = [];
+      addonChecks.forEach(function (c) {
+        if (c.checked) {
+          addonTotal += parseFloat(c.getAttribute("data-price")) || 0;
+          var label = c.closest(".builder-option");
+          var text = label ? label.textContent.trim().replace(/\+\d+.*$/, "").trim() : "";
+          if (text) addonLabels.push(text);
+        }
+      });
+      return { total: tierPrice + addonTotal, tierName: tierName, addonLabels: addonLabels };
+    }
+
+    function render() {
+      var sel = currentSelection();
+      totalBox.innerHTML = 'סה"כ חודשי משוער: <strong>' + sel.total + " ₪</strong>";
+    }
+
+    tierRadios.forEach(function (r) {
+      r.addEventListener("change", render);
+    });
+    addonChecks.forEach(function (c) {
+      c.addEventListener("change", render);
+    });
+    render();
+
+    submitBtn.addEventListener("click", function () {
+      var sel = currentSelection();
+      trackEvent("package_builder_submit", {
+        tier: sel.tierName,
+        addons: sel.addonLabels.join(","),
+        total: sel.total,
+      });
+
+      var siteType = document.getElementById("site-type");
+      var budget = document.getElementById("budget");
+      var message = document.getElementById("message");
+
+      var tierValueMap = {
+        Starter: "starter",
+        Business: "business",
+        Pro: "pro",
+        Premium: "premium",
+        Prime: "prime",
+        Elite: "elite",
+      };
+      if (siteType && tierValueMap[sel.tierName]) siteType.value = tierValueMap[sel.tierName];
+
+      if (budget) {
+        budget.value =
+          sel.total <= 50 ? "up-to-50" : sel.total <= 100 ? "50-100" : sel.total <= 150 ? "100-150" : "150-plus";
+      }
+
+      if (message) {
+        var summary =
+          "מעוניין/ת בחבילה מותאמת אישית: " +
+          sel.tierName +
+          (sel.addonLabels.length ? " + " + sel.addonLabels.join(" + ") : "") +
+          ". הערכת מחיר חודשית: " +
+          sel.total +
+          " ₪.";
+        message.value = message.value ? message.value + "\n\n" + summary : summary;
+      }
+
+      var contactSection = document.getElementById("contact");
+      if (contactSection) contactSection.scrollIntoView({ behavior: "smooth", block: "start" });
+      var nameField = document.getElementById("name");
+      if (nameField) setTimeout(function () { nameField.focus(); }, 500);
+    });
+  });
+
   /* ---------- Discord username copy-to-clipboard ---------- */
   safe("Discord copy buttons", function () {
     function copyToClipboard(text, onDone) {

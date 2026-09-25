@@ -27,16 +27,16 @@
 <meta property="og:locale" content="he_IL">
 <meta property="og:title" content="אתרים מקצועיים לעסקים | web4b">
 <meta property="og:description" content="בניית אתרים מקצועיים לעסקים בעזרת AI + עיצוב והתאמה אישיים. חבילות החל מ־19 ₪ לחודש.">
-<meta property="og:image" content="assets/og-image.svg">
+<meta property="og:image" content="/assets/og-image.svg">
 <meta property="og:site_name" content="web4b">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="אתרים מקצועיים לעסקים | web4b">
 <meta name="twitter:description" content="בניית אתרים מקצועיים לעסקים בעזרת AI + עיצוב והתאמה אישיים. חבילות החל מ־19 ₪ לחודש.">
 
-<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
-<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
-<link rel="manifest" href="manifest.json">
+<link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="manifest" href="/manifest.json">
 <meta name="theme-color" content="#2563eb">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -47,7 +47,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-<link rel="stylesheet" href="css/style.min.css">
+<link rel="stylesheet" href="/css/style.min.css">
 
 <script type="application/ld+json">
 {
@@ -415,6 +415,7 @@
 
     <div class="quiz-toggle-wrap reveal">
       <button type="button" class="btn btn-secondary" id="quiz-toggle" aria-expanded="false" aria-controls="plan-quiz">🧭 לא בטוחים איזו חבילה מתאימה? בדקו ב-30 שניות</button>
+      <button type="button" class="btn btn-secondary" id="builder-toggle" aria-expanded="false" aria-controls="package-builder">🛠️ בונים חבילה בהתאמה אישית משלכם</button>
     </div>
     <div class="plan-quiz" id="plan-quiz" hidden>
       <div class="quiz-question">
@@ -463,6 +464,33 @@
       </div>
       <button type="button" class="btn btn-primary" id="quiz-submit">הצגת ההמלצה שלי</button>
       <div class="quiz-result" id="quiz-result" hidden></div>
+    </div>
+
+    <div class="plan-quiz" id="package-builder" hidden>
+      <div class="quiz-question">
+        <label>בחרו חבילת בסיס</label>
+        <div class="builder-options">
+          <label class="builder-option"><input type="radio" name="builder-tier" value="Starter" data-price="19" checked> Starter <span class="builder-option-price">19 ₪</span></label>
+          <label class="builder-option"><input type="radio" name="builder-tier" value="Business" data-price="39"> Business <span class="builder-option-price">39 ₪</span></label>
+          <label class="builder-option"><input type="radio" name="builder-tier" value="Pro" data-price="59"> Pro <span class="builder-option-price">59 ₪</span></label>
+          <label class="builder-option"><input type="radio" name="builder-tier" value="Premium" data-price="89"> Premium <span class="builder-option-price">89 ₪</span></label>
+          <label class="builder-option"><input type="radio" name="builder-tier" value="Prime" data-price="139"> Prime <span class="builder-option-price">139 ₪</span></label>
+          <label class="builder-option"><input type="radio" name="builder-tier" value="Elite" data-price="169"> Elite <span class="builder-option-price">169 ₪</span></label>
+        </div>
+      </div>
+      <div class="quiz-question">
+        <label>הוסיפו תוספות (אופציונלי)</label>
+        <div class="builder-options">
+          <label class="builder-option"><input type="checkbox" data-addon="store" data-price="60"> חנות אונליין + סליקת תשלומים <span class="builder-option-price">+60 ₪</span></label>
+          <label class="builder-option"><input type="checkbox" data-addon="booking" data-price="40"> מערכת הזמנות ותיאומים מתקדמת <span class="builder-option-price">+40 ₪</span></label>
+          <label class="builder-option"><input type="checkbox" data-addon="updates" data-price="25"> עדכונים שוטפים כל חודש <span class="builder-option-price">+25 ₪</span></label>
+          <label class="builder-option"><input type="checkbox" data-addon="seo" data-price="20"> SEO מתקדם <span class="builder-option-price">+20 ₪</span></label>
+          <label class="builder-option"><input type="checkbox" data-addon="pages" data-price="16"> 1-2 עמודים נוספים <span class="builder-option-price">+16 ₪</span></label>
+        </div>
+      </div>
+      <div class="builder-total" id="builder-total">סה"כ חודשי משוער: <strong>19 ₪</strong></div>
+      <button type="button" class="btn btn-primary" id="builder-submit">קבלו הצעת מחיר לפי הבחירה שלי</button>
+      <p class="builder-note">ההערכה היא לצורך התמצאות בלבד — נדייק אותה איתכם לפי הצרכים המדויקים של העסק.</p>
     </div>
 
     <div class="pricing-grid reveal-stagger reveal">
@@ -1033,7 +1061,7 @@
           <li><a href="#portfolio">דוגמאות</a></li>
           <li><a href="#faq">שאלות נפוצות</a></li>
           <li><a href="#contact">צור קשר</a></li>
-          <li><a href="blog.html">בלוג</a></li>
+          <li><a href="/blog.html">בלוג</a></li>
         </ul>
       </div>
 
@@ -1052,8 +1080,8 @@
       <div class="footer-col">
         <h3>מידע משפטי</h3>
         <ul>
-          <li><a href="privacy.html">מדיניות פרטיות</a></li>
-          <li><a href="terms.html">תנאי שימוש</a></li>
+          <li><a href="/privacy.html">מדיניות פרטיות</a></li>
+          <li><a href="/terms.html">תנאי שימוש</a></li>
         </ul>
       </div>
     </div>
@@ -1061,18 +1089,18 @@
     <div class="footer-bottom">
       <span>© 2026 web4b. כל הזכויות שמורות.</span>
       <div class="legal-links">
-        <a href="privacy.html">Privacy Policy</a>
-        <a href="terms.html">Terms of Service</a>
+        <a href="/privacy.html">Privacy Policy</a>
+        <a href="/terms.html">Terms of Service</a>
       </div>
     </div>
   </div>
 </footer>
 
 <div class="cookie-banner" id="cookie-banner" role="dialog" aria-live="polite" aria-label="הודעת עוגיות">
-  <p>האתר משתמש בעוגיות (Cookies) לצורך שיפור החוויה וניתוח שימוש (Google Analytics). המשך גלישה מהווה הסכמה. <a href="privacy.html">מדיניות פרטיות</a>.</p>
+  <p>האתר משתמש בעוגיות (Cookies) לצורך שיפור החוויה וניתוח שימוש (Google Analytics). המשך גלישה מהווה הסכמה. <a href="/privacy.html">מדיניות פרטיות</a>.</p>
   <button type="button" class="btn btn-primary btn-sm" id="cookie-accept">הבנתי</button>
 </div>
 
-<script src="js/script.min.js" defer></script>
+<script src="/js/script.min.js" defer></script>
 </body>
 </html>
