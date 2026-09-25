@@ -169,81 +169,6 @@
     });
   });
 
-  /* ---------- Plan recommender quiz ---------- */
-  safe("plan recommender quiz", function () {
-    var toggleBtn = document.getElementById("quiz-toggle");
-    var quizBox = document.getElementById("plan-quiz");
-    if (toggleBtn && quizBox) {
-      toggleBtn.addEventListener("click", function () {
-        var willShow = quizBox.hidden;
-        quizBox.hidden = !willShow;
-        toggleBtn.setAttribute("aria-expanded", String(willShow));
-      });
-    }
-
-    var submitBtn = document.getElementById("quiz-submit");
-    var resultBox = document.getElementById("quiz-result");
-    var pagesSelect = document.getElementById("quiz-pages");
-    var domainSelect = document.getElementById("quiz-domain");
-    var designSelect = document.getElementById("quiz-design");
-    var storeSelect = document.getElementById("quiz-store");
-    var bookingSelect = document.getElementById("quiz-booking");
-    var updatesSelect = document.getElementById("quiz-updates");
-    if (
-      !submitBtn ||
-      !resultBox ||
-      !pagesSelect ||
-      !domainSelect ||
-      !designSelect ||
-      !storeSelect ||
-      !bookingSelect ||
-      !updatesSelect
-    ) {
-      return;
-    }
-
-    submitBtn.addEventListener("click", function () {
-      var pages = pagesSelect.value;
-      var domain = domainSelect.value;
-      var design = designSelect.value;
-      var store = storeSelect.value;
-      var booking = bookingSelect.value;
-      var updates = updatesSelect.value;
-
-      var plan;
-      if (store === "yes") {
-        plan = "Elite";
-      } else if (booking === "yes") {
-        plan = "Prime";
-      } else if (updates === "yes") {
-        plan = "Prime";
-      } else if (design === "full" || pages === "10") {
-        plan = "Premium";
-      } else if (domain === "yes" || pages === "7") {
-        plan = "Pro";
-      } else if (pages === "4") {
-        plan = "Business";
-      } else {
-        plan = "Starter";
-      }
-
-      trackEvent("plan_quiz_result", { recommended_plan: plan });
-
-      resultBox.hidden = false;
-      resultBox.innerHTML = "ההמלצה שלנו: <strong>" + plan + "</strong>";
-
-      document.querySelectorAll(".price-card.is-recommended").forEach(function (card) {
-        card.classList.remove("is-recommended");
-      });
-
-      var chosenBtn = document.querySelector('[data-plan="' + plan + '"]');
-      var card = chosenBtn && chosenBtn.closest(".price-card");
-      if (card) {
-        card.classList.add("is-recommended");
-        card.scrollIntoView({ behavior: "smooth", block: "center" });
-      }
-    });
-  });
 
   /* ---------- Custom package builder ---------- */
   safe("package builder", function () {
@@ -261,6 +186,7 @@
     var totalBox = document.getElementById("builder-total");
     var tierRadios = builderBox.querySelectorAll('input[name="builder-tier"]');
     var addonChecks = builderBox.querySelectorAll("input[data-addon]");
+    var pagesSelect = document.getElementById("builder-pages");
     var submitBtn = document.getElementById("builder-submit");
     if (!totalBox || !tierRadios.length || !submitBtn) return;
 
@@ -273,6 +199,7 @@
           tierName = r.value;
         }
       });
+
       var addonTotal = 0;
       var addonLabels = [];
       addonChecks.forEach(function (c) {
@@ -283,7 +210,15 @@
           if (text) addonLabels.push(text);
         }
       });
-      return { total: tierPrice + addonTotal, tierName: tierName, addonLabels: addonLabels };
+
+      var pagesPrice = 0;
+      if (pagesSelect && pagesSelect.selectedOptions.length) {
+        var pagesOption = pagesSelect.selectedOptions[0];
+        pagesPrice = parseFloat(pagesOption.getAttribute("data-price")) || 0;
+        if (pagesPrice > 0) addonLabels.push(pagesOption.textContent.trim());
+      }
+
+      return { total: tierPrice + addonTotal + pagesPrice, tierName: tierName, addonLabels: addonLabels };
     }
 
     function render() {
@@ -297,6 +232,7 @@
     addonChecks.forEach(function (c) {
       c.addEventListener("change", render);
     });
+    if (pagesSelect) pagesSelect.addEventListener("change", render);
     render();
 
     submitBtn.addEventListener("click", function () {

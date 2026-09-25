@@ -414,56 +414,7 @@
     </div>
 
     <div class="quiz-toggle-wrap reveal">
-      <button type="button" class="btn btn-secondary" id="quiz-toggle" aria-expanded="false" aria-controls="plan-quiz">🧭 לא בטוחים איזו חבילה מתאימה? בדקו ב-30 שניות</button>
       <button type="button" class="btn btn-secondary" id="builder-toggle" aria-expanded="false" aria-controls="package-builder">🛠️ בונים חבילה בהתאמה אישית משלכם</button>
-    </div>
-    <div class="plan-quiz" id="plan-quiz" hidden>
-      <div class="quiz-question">
-        <label for="quiz-pages">כמה עמודים אתם צריכים?</label>
-        <select id="quiz-pages">
-          <option value="2">עד 2 עמודים</option>
-          <option value="4">3-4 עמודים</option>
-          <option value="7">5-7 עמודים</option>
-          <option value="10">8-10 עמודים, או עיצוב מלא בהתאמה אישית</option>
-        </select>
-      </div>
-      <div class="quiz-question">
-        <label for="quiz-domain">אתם צריכים דומיין אישי (כתובת משלכם, כמו www.השם-שלכם.co.il)?</label>
-        <select id="quiz-domain">
-          <option value="no">לא</option>
-          <option value="yes">כן</option>
-        </select>
-      </div>
-      <div class="quiz-question">
-        <label for="quiz-design">כמה חשוב לכם עיצוב בהתאמה אישית מלאה (לא תבנית קיימת)?</label>
-        <select id="quiz-design">
-          <option value="normal">חשוב, אבל לא קריטי</option>
-          <option value="full">חשוב לי מאוד — עיצוב ייחודי 100%</option>
-        </select>
-      </div>
-      <div class="quiz-question">
-        <label for="quiz-store">אתם צריכים חנות אונליין עם סליקת תשלומים?</label>
-        <select id="quiz-store">
-          <option value="no">לא</option>
-          <option value="yes">כן</option>
-        </select>
-      </div>
-      <div class="quiz-question">
-        <label for="quiz-booking">אתם צריכים מערכת הזמנות/תיאומים מתקדמת?</label>
-        <select id="quiz-booking">
-          <option value="no">לא</option>
-          <option value="yes">כן</option>
-        </select>
-      </div>
-      <div class="quiz-question">
-        <label for="quiz-updates">חשוב לכם שנעדכן את האתר באופן שוטף כל חודש?</label>
-        <select id="quiz-updates">
-          <option value="no">לא, רק בזמנים מסוימים</option>
-          <option value="yes">כן, עדכונים חודשיים קבועים</option>
-        </select>
-      </div>
-      <button type="button" class="btn btn-primary" id="quiz-submit">הצגת ההמלצה שלי</button>
-      <div class="quiz-result" id="quiz-result" hidden></div>
     </div>
 
     <div class="plan-quiz" id="package-builder" hidden>
@@ -479,13 +430,28 @@
         </div>
       </div>
       <div class="quiz-question">
+        <label>כמה עמודים נוספים אתם צריכים מעבר לחבילת הבסיס?</label>
+        <select id="builder-pages">
+          <option value="0" data-price="0" selected>לא צריך עמודים נוספים</option>
+          <option value="1-2" data-price="16">1-2 עמודים נוספים</option>
+          <option value="3-5" data-price="35">3-5 עמודים נוספים</option>
+          <option value="6+" data-price="60">6 עמודים נוספים ומעלה</option>
+        </select>
+      </div>
+      <div class="quiz-question">
         <label>הוסיפו תוספות (אופציונלי)</label>
         <div class="builder-options">
+          <label class="builder-option"><input type="checkbox" data-addon="domain" data-price="15"> דומיין אישי (כתובת משלכם) <span class="builder-option-price">+15 ₪</span></label>
           <label class="builder-option"><input type="checkbox" data-addon="store" data-price="60"> חנות אונליין + סליקת תשלומים <span class="builder-option-price">+60 ₪</span></label>
           <label class="builder-option"><input type="checkbox" data-addon="booking" data-price="40"> מערכת הזמנות ותיאומים מתקדמת <span class="builder-option-price">+40 ₪</span></label>
           <label class="builder-option"><input type="checkbox" data-addon="updates" data-price="25"> עדכונים שוטפים כל חודש <span class="builder-option-price">+25 ₪</span></label>
           <label class="builder-option"><input type="checkbox" data-addon="seo" data-price="20"> SEO מתקדם <span class="builder-option-price">+20 ₪</span></label>
-          <label class="builder-option"><input type="checkbox" data-addon="pages" data-price="16"> 1-2 עמודים נוספים <span class="builder-option-price">+16 ₪</span></label>
+          <label class="builder-option"><input type="checkbox" data-addon="gallery" data-price="12"> גלריית תמונות מורחבת <span class="builder-option-price">+12 ₪</span></label>
+          <label class="builder-option"><input type="checkbox" data-addon="blog" data-price="18"> בלוג / מאמרים <span class="builder-option-price">+18 ₪</span></label>
+          <label class="builder-option"><input type="checkbox" data-addon="english" data-price="25"> אתר דו-לשוני (עברית + אנגלית) <span class="builder-option-price">+25 ₪</span></label>
+          <label class="builder-option"><input type="checkbox" data-addon="social" data-price="12"> אינטגרציה עם אינסטגרם/פייסבוק <span class="builder-option-price">+12 ₪</span></label>
+          <label class="builder-option"><input type="checkbox" data-addon="newsletter" data-price="20"> מערכת ניוזלטר / דיוור במייל <span class="builder-option-price">+20 ₪</span></label>
+          <label class="builder-option"><input type="checkbox" data-addon="priority" data-price="15"> תמיכה בעדיפות (מענה מהיר) <span class="builder-option-price">+15 ₪</span></label>
         </div>
       </div>
       <div class="builder-total" id="builder-total">סה"כ חודשי משוער: <strong>19 ₪</strong></div>
