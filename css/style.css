@@ -1281,6 +1281,8 @@ button { font-family: inherit; cursor: pointer; }
 }
 .builder-total strong { color: var(--color-accent); font-size: 22px; }
 .builder-note { font-size: 13px; color: var(--color-ink-soft); text-align: center; margin: 0; }
+.builder-base-note { font-size: 14px; color: var(--color-ink-soft); background: #fff; border-radius: var(--radius-sm); padding: 14px 16px; }
+.builder-base-note strong { color: var(--color-accent); }
 
 .price-card.is-recommended {
   border: 2px solid var(--color-accent);

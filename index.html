@@ -419,33 +419,27 @@
 
     <div class="plan-quiz" id="package-builder" hidden>
       <div class="quiz-question">
-        <label>בחרו חבילת בסיס</label>
-        <div class="builder-options">
-          <label class="builder-option"><input type="radio" name="builder-tier" value="Starter" data-price="19" checked> Starter <span class="builder-option-price">19 ₪</span></label>
-          <label class="builder-option"><input type="radio" name="builder-tier" value="Business" data-price="39"> Business <span class="builder-option-price">39 ₪</span></label>
-          <label class="builder-option"><input type="radio" name="builder-tier" value="Pro" data-price="59"> Pro <span class="builder-option-price">59 ₪</span></label>
-          <label class="builder-option"><input type="radio" name="builder-tier" value="Premium" data-price="89"> Premium <span class="builder-option-price">89 ₪</span></label>
-          <label class="builder-option"><input type="radio" name="builder-tier" value="Prime" data-price="139"> Prime <span class="builder-option-price">139 ₪</span></label>
-          <label class="builder-option"><input type="radio" name="builder-tier" value="Elite" data-price="169"> Elite <span class="builder-option-price">169 ₪</span></label>
-        </div>
+        <p class="builder-base-note">כל אתר כולל בסיס קבוע: עיצוב מקצועי, אחסון, SSL והתאמה למובייל — <strong>19 ₪ לחודש</strong>. תבחרו כל תוספת שרלוונטית לכם, בלי הגבלה — אין "חבילה" נעולה.</p>
       </div>
       <div class="quiz-question">
-        <label>כמה עמודים נוספים אתם צריכים מעבר לחבילת הבסיס?</label>
+        <label>כמה עמודים אתם צריכים בסך הכל?</label>
         <select id="builder-pages">
-          <option value="0" data-price="0" selected>לא צריך עמודים נוספים</option>
-          <option value="1-2" data-price="16">1-2 עמודים נוספים</option>
-          <option value="3-5" data-price="35">3-5 עמודים נוספים</option>
-          <option value="6+" data-price="60">6 עמודים נוספים ומעלה</option>
+          <option value="2" data-price="0" selected>עד 2 עמודים (כלול בבסיס)</option>
+          <option value="4" data-price="20">3-4 עמודים</option>
+          <option value="7" data-price="40">5-7 עמודים</option>
+          <option value="10" data-price="70">8-10 עמודים</option>
         </select>
       </div>
       <div class="quiz-question">
-        <label>הוסיפו תוספות (אופציונלי)</label>
+        <label>בחרו כל תוספת שרלוונטית לכם (אין הגבלה על כמות)</label>
         <div class="builder-options">
+          <label class="builder-option"><input type="checkbox" data-addon="design" data-price="30"> עיצוב בהתאמה אישית מלאה (100%, לא תבנית) <span class="builder-option-price">+30 ₪</span></label>
           <label class="builder-option"><input type="checkbox" data-addon="domain" data-price="15"> דומיין אישי (כתובת משלכם) <span class="builder-option-price">+15 ₪</span></label>
           <label class="builder-option"><input type="checkbox" data-addon="store" data-price="60"> חנות אונליין + סליקת תשלומים <span class="builder-option-price">+60 ₪</span></label>
           <label class="builder-option"><input type="checkbox" data-addon="booking" data-price="40"> מערכת הזמנות ותיאומים מתקדמת <span class="builder-option-price">+40 ₪</span></label>
           <label class="builder-option"><input type="checkbox" data-addon="updates" data-price="25"> עדכונים שוטפים כל חודש <span class="builder-option-price">+25 ₪</span></label>
           <label class="builder-option"><input type="checkbox" data-addon="seo" data-price="20"> SEO מתקדם <span class="builder-option-price">+20 ₪</span></label>
+          <label class="builder-option"><input type="checkbox" data-addon="analytics" data-price="8"> Google Analytics <span class="builder-option-price">+8 ₪</span></label>
           <label class="builder-option"><input type="checkbox" data-addon="gallery" data-price="12"> גלריית תמונות מורחבת <span class="builder-option-price">+12 ₪</span></label>
           <label class="builder-option"><input type="checkbox" data-addon="blog" data-price="18"> בלוג / מאמרים <span class="builder-option-price">+18 ₪</span></label>
           <label class="builder-option"><input type="checkbox" data-addon="english" data-price="25"> אתר דו-לשוני (עברית + אנגלית) <span class="builder-option-price">+25 ₪</span></label>

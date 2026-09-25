@@ -183,23 +183,14 @@
     }
     if (!builderBox) return;
 
+    var BASE_PRICE = 19;
     var totalBox = document.getElementById("builder-total");
-    var tierRadios = builderBox.querySelectorAll('input[name="builder-tier"]');
     var addonChecks = builderBox.querySelectorAll("input[data-addon]");
     var pagesSelect = document.getElementById("builder-pages");
     var submitBtn = document.getElementById("builder-submit");
-    if (!totalBox || !tierRadios.length || !submitBtn) return;
+    if (!totalBox || !submitBtn) return;
 
     function currentSelection() {
-      var tierPrice = 0;
-      var tierName = "";
-      tierRadios.forEach(function (r) {
-        if (r.checked) {
-          tierPrice = parseFloat(r.getAttribute("data-price")) || 0;
-          tierName = r.value;
-        }
-      });
-
       var addonTotal = 0;
       var addonLabels = [];
       addonChecks.forEach(function (c) {
@@ -218,7 +209,7 @@
         if (pagesPrice > 0) addonLabels.push(pagesOption.textContent.trim());
       }
 
-      return { total: tierPrice + addonTotal + pagesPrice, tierName: tierName, addonLabels: addonLabels };
+      return { total: BASE_PRICE + addonTotal + pagesPrice, addonLabels: addonLabels };
     }
 
     function render() {
@@ -226,9 +217,6 @@
       totalBox.innerHTML = 'סה"כ חודשי משוער: <strong>' + sel.total + " ₪</strong>";
     }
 
-    tierRadios.forEach(function (r) {
-      r.addEventListener("change", render);
-    });
     addonChecks.forEach(function (c) {
       c.addEventListener("change", render);
     });
@@ -238,7 +226,6 @@
     submitBtn.addEventListener("click", function () {
       var sel = currentSelection();
       trackEvent("package_builder_submit", {
-        tier: sel.tierName,
         addons: sel.addonLabels.join(","),
         total: sel.total,
       });
@@ -247,15 +234,7 @@
       var budget = document.getElementById("budget");
       var message = document.getElementById("message");
 
-      var tierValueMap = {
-        Starter: "starter",
-        Business: "business",
-        Pro: "pro",
-        Premium: "premium",
-        Prime: "prime",
-        Elite: "elite",
-      };
-      if (siteType && tierValueMap[sel.tierName]) siteType.value = tierValueMap[sel.tierName];
+      if (siteType) siteType.value = "not-sure";
 
       if (budget) {
         budget.value =
@@ -264,8 +243,7 @@
 
       if (message) {
         var summary =
-          "מעוניין/ת בחבילה מותאמת אישית: " +
-          sel.tierName +
+          "מעוניין/ת בחבילה מותאמת אישית: בסיס (עיצוב, אחסון, SSL, מובייל)" +
           (sel.addonLabels.length ? " + " + sel.addonLabels.join(" + ") : "") +
           ". הערכת מחיר חודשית: " +
           sel.total +
